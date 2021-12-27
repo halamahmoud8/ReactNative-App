@@ -36,7 +36,8 @@ export const main = StyleSheet.create({
         margin: 12,
         borderWidth: 1,
         padding: 10,
-        width:'20%'
+        width:'20%',
+
     },
     btn:{
         width:'10%',

@@ -23,9 +23,9 @@ export const main = StyleSheet.create({
 
     },
     cardImage: {
-        width: 30,
-        height: 30,
-         resizeMode: 'cover'
+        width: '100%',
+        height: 200,
+         resizeMode: 'stretch'
 
     },
     container: {
@@ -36,6 +36,7 @@ export const main = StyleSheet.create({
         margin: 12,
         borderWidth: 1,
         padding: 10,
+        width:'20%'
     },
     btn:{
         width:'10%',

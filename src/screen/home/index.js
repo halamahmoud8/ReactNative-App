@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { View, Text, Button } from 'react-native';
+import { View, Text, Button,TouchableOpacity } from 'react-native';
 import axios from 'axios';
 import { BookItem } from '../../components/bookItem'
 import { useNavigation } from '@react-navigation/native';
@@ -29,11 +29,14 @@ export const HomeScreen = () => {
                     <BookItem book={item} key={item.id} />
                 )
             })}
-            <Button style={main.btn}
+            <TouchableOpacity style={main.btn}>
+            <Button 
                 onPress={()=>{navigation.navigate("addBook")}}
                 title="Add Book"
 
             />
+            </TouchableOpacity>
+           
         </View>
     );
 }

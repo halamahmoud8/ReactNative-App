@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { View, Text ,StyleSheet,TextInput} from 'react-native';
+import { View, Text ,TouchableOpacity,TextInput,Button} from 'react-native';
 import {main} from '../../styles/main'
 
 export const AddBookScreen = () => {
@@ -12,6 +12,7 @@ export const AddBookScreen = () => {
 
     return (
         <View style={main.container}>
+          <Text style={main.text}>Add New Book</Text>
            <TextInput
         style={main.input}
         onChangeText={onChangeTitle}
@@ -40,6 +41,13 @@ export const AddBookScreen = () => {
         placeholder="Enter Book Date"
         keyboardType="numeric"
       />
+         <TouchableOpacity style={main.btn}>
+            <Button 
+               onPress={()=>{navigation.navigate("addBook")}}
+                title="Save"
+
+            />
+            </TouchableOpacity>
         </View>
     );
     

@@ -1,14 +1,15 @@
 import React, { useEffect } from 'react';
-import { View, Text, Button,TouchableOpacity } from 'react-native';
+import { ScrollView,SafeAreaView, Text, FlatList,TouchableOpacity } from 'react-native';
 import axios from 'axios';
 import { BookItem } from '../../components/bookItem'
 import { useNavigation } from '@react-navigation/native';
-import { main } from '../../styles/main'
+import { styles } from './style'
 
 export const HomeScreen = () => {
     const [books, setBooks] = React.useState([]);
+
     const navigation = useNavigation();
-    // navigation.navigate("addBook")
+    
     useEffect(() => {
         axios.get('https://www.googleapis.com/books/v1/volumes?q=flowers+inauthor:keyes&&startIndex=0&&maxR')
             .then(response => {
@@ -20,23 +21,24 @@ export const HomeScreen = () => {
             })
     }, [])
 
-
+const addBook=(value)=>{
+    setBooks([...books,value])
+}
     return (
-        <View style={main.container}>
-            
-            {books?.map((item) => {
+        <SafeAreaView style={styles.container} >
+                    <FlatList data={books} renderItem={({item}) => {
                 return (
                     <BookItem book={item} key={item.id} />
-                )
-            })}
-            <TouchableOpacity style={main.btn}>
-            <Button 
-                onPress={()=>{navigation.navigate("addBook")}}
-                title="Add Book"
+                    
+                )}}>
 
-            />
+         
+             </FlatList>
+            <TouchableOpacity style={styles.btn}  onPress={()=>{navigation.navigate("addBook",{addBook})}}>
+          <Text style={styles.textBtn}>Add Book</Text>
             </TouchableOpacity>
            
-        </View>
+       
+        </SafeAreaView>
     );
 }

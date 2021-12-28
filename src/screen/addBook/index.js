@@ -1,52 +1,70 @@
+import { useNavigation } from '@react-navigation/native';
 import React, { useEffect } from 'react';
 import { View, Text ,TouchableOpacity,TextInput,Button} from 'react-native';
-import {main} from '../../styles/main'
+import {styles} from './style'
 
-export const AddBookScreen = () => {
+export const AddBookScreen = ({route}) => {
     const [title, onChangeTitle] = React.useState(null);
     const [Desc, onChangeDesc] = React.useState(null);
     const [image, onChangeImage] = React.useState(null);
     const [date, onChangeDate] = React.useState(null);
 
-
-
+const {goBack}=useNavigation()
     return (
-        <View style={main.container}>
-          <Text style={main.text}>Add New Book</Text>
+        <View style={styles.container}>
+          <Text style={styles.text}>Add New Book</Text>
            <TextInput
-        style={main.input}
+        style={styles.input}
         onChangeText={onChangeTitle}
         value={title}
         placeholder="Enter Book Title"
-        keyboardType="numeric"
+       
       />
             <TextInput
-        style={main.input}
+        style={styles.input}
         onChangeText={onChangeDesc}
         value={Desc}
         placeholder="Enter Book Description"
-        keyboardType="numeric"
+      
       />
                <TextInput
-        style={main.input}
+        style={styles.input}
         onChangeText={onChangeImage}
         value={image}
         placeholder="Enter Book Image"
-        keyboardType="numeric"
+       
       />
             <TextInput
-        style={main.input}
+        style={styles.input}
         onChangeText={onChangeDate}
         value={date}
         placeholder="Enter Book Date"
         keyboardType="numeric"
       />
-         <TouchableOpacity style={main.btn}>
-            <Button 
-               onPress={()=>{navigation.navigate("addBook")}}
-                title="Save"
-
-            />
+         <TouchableOpacity style={styles.btn} onPress={()=>{
+           goBack();
+           route.params.addBook({
+            
+          
+              "volumeInfo":{
+                 "title":title,
+              
+                 
+                 "publishedDate":date,
+                 "description":Desc,
+              
+              
+                 "imageLinks":{
+                    "thumbnail":image
+                 },
+                
+              },
+           
+           
+         
+           })}
+           }>
+          <Text style={styles.textBtn}>Save</Text>
             </TouchableOpacity>
         </View>
     );

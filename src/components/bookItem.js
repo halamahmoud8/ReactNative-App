@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { View, Text, Image,TouchableOpacity } from 'react-native';
-import { main } from '../styles/main'
+import { styles } from './style'
 
 export const BookItem = ({ book }) => {
     const { volumeInfo } = book;
@@ -8,14 +8,13 @@ export const BookItem = ({ book }) => {
     console.log(imageLinks);
     return (
 
-        <View style={main.container}>
-            <TouchableOpacity style={main.card}>
-                <Image style={main.cardImage} source={{ uri: `${imageLinks?.thumbnail}` }} />
+        <View style={styles.card}>
+                <Image resizeMode='contain' style={styles.cardImage} source={{ uri: imageLinks?.thumbnail }} />
 
-                <Text style={main.cardText}>{title}</Text>
-                <Text style={main.cardText}>{publishedDate}</Text>
-                <Text style={main.cardText}>{description}</Text>
-            </TouchableOpacity>
+                <Text style={styles.cardText}>{title}</Text>
+                <Text style={styles.cardText}>{publishedDate}</Text>
+                <Text allowFontScaling  style={styles.descText}>{description}</Text>
+            
 
 
 

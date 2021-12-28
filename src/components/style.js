@@ -34,7 +34,8 @@ borderWidth:3,
         height: hp('40%'), // 70% of height device screen
         width: wp('80%') ,
         alignSelf:"center",
-        marginTop:10
+        marginTop:10,
+        marginBottom:10
 
 
     },
